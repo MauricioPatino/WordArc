@@ -24,22 +24,23 @@ export default function RootLayout() {
           headerTintColor: 'black',
           headerStyle: { backgroundColor: 'white' }
          }} />
-      {/* <Stack.Screen name="signOut" options={{
-         headerShown: true, 
-         headerTitle: 'Sign Out',
-          headerTintColor: 'black',
-          headerStyle: { backgroundColor: 'white' }
-         }} /> */}
       <Stack.Screen name="game" options={{ 
         headerBackTitle: 'WordArc',
         headerShown: true,
         headerTitle: 'WordArc',
+
         headerTintColor: 'black',
         headerStyle: { backgroundColor: 'white' }
         }} />
       <Stack.Screen name="endGame" options={{
           headerShown: false,
           }} />
+      {/* <Stack.Screen name="Leaderboard" options={{
+          headerShown: false,
+          }} />
+      <Stack.Screen name="Settings" options={{
+          headerShown: false,
+          }} /> */}
     </Stack>
     </GestureHandlerRootView>
     </ClerkLoaded>

@@ -1,10 +1,13 @@
-import { Text, TouchableOpacity, View, StyleSheet, Alert } from "react-native";
-import { Link } from "expo-router";
+import { Text, TouchableOpacity, View, StyleSheet, Alert, Modal, Pressable } from "react-native";
+import { Link, Tabs } from "expo-router";
 import Animated, { FadeInLeft } from 'react-native-reanimated';
-import React from "react";
+import React, { useState } from "react";
 import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
 import Icon from '@/assets/images/wordArc.svg';
-
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import Settings from "@/components/Settings";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
@@ -15,9 +18,9 @@ if (!publishableKey) {
   )
 } 
 
-export default function Index() {
-
+export default function Index(){
   const { signOut } = useAuth();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const signOutFunction = () => {
     Alert.alert("Sign Out", "Are you sure you want to sign out?", [
@@ -59,13 +62,30 @@ export default function Index() {
           </AnimatedTouchableOpacity>
       </SignedIn>
 
+      <View style={styles.bottomRow}>
+      <Link href={"/leaderboard"} asChild>
+        <AnimatedTouchableOpacity entering={FadeInLeft} style={styles.btn} >
+          <Text style={styles.btnText}>Leaderboard</Text>
+        </AnimatedTouchableOpacity>
+      </Link>
+
+      <AnimatedTouchableOpacity entering={FadeInLeft} style={styles.btn} onPress={() => setModalVisible(true)}>
+        <Text style={styles.btnText}>Settings</Text>
+      </AnimatedTouchableOpacity>
+      <Settings visible={modalVisible} onClose={() => setModalVisible(false)}>
+        <Text style={styles.btnText}>Dark Mode: ON/OFF</Text>
+        <Text style={styles.btnText}>Vibrate: ON/OFF </Text>
+      </Settings>
+
+      </View>
+
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     justifyContent: "center",
     alignItems: "center",
     gap: 20,
@@ -87,5 +107,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-  }
+  },
+  bottomRow: {
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 20,
+  },
+
 });
