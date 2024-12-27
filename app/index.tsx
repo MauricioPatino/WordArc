@@ -1,12 +1,9 @@
 import { Text, TouchableOpacity, View, StyleSheet, Alert, Modal, Pressable } from "react-native";
-import { Link, Tabs } from "expo-router";
+import { Link } from "expo-router";
 import Animated, { FadeInLeft } from 'react-native-reanimated';
 import React, { useState } from "react";
 import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
 import Icon from '@/assets/images/wordArc.svg';
-import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Settings from "@/components/Settings";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
