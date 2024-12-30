@@ -26,14 +26,12 @@ Create an account and enable email, Google and Apple sign ins.
 
 Create an .env file in app project. Copy your Clerk api key into it.
 
-Copy declarations.d.ts into project folder.
+Copy declarations.d.ts &&  metro.config.js into project folder. Allows for SVG images to appear.
 
-Create a file called expo-env-d.ts and paste this 
+Create a file called expo-env-d.ts and paste this, ' reference types="expo/types" ' wrapped with <> brackets. 
 
 Go to firebase and create a new project.
 
 Create a new web app and copy the firebaseConfig and place it into your utils folder.
-
-<reference types="expo/types" />
 
 That's all.
