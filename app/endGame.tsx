@@ -62,7 +62,9 @@ const endGame = () => {
       } else {
         return <Text style={{ fontSize: 20, fontWeight: 'bold' }}>You lost! The word was {word}</Text>;
       }
+      
     };
+    console.log(userScore?.wins, userScore?.played, userScore?.currentStreak);
 
     const goBack = () => {
         router.dismissAll();
@@ -74,6 +76,7 @@ const endGame = () => {
       <View style={styles.condition}>
       {condition()}
       </View>
+      <View style = {styles.statsContainer}>
       <SignedIn>
           <Text style={styles.text}>Statistics</Text>
           <View style={styles.stats}>
@@ -91,8 +94,9 @@ const endGame = () => {
             </View>
           </View>
         </SignedIn>
+      </View>
       <TouchableOpacity onPress={() => goBack()} >
-        <Text style={styles.playAgain}>Play Again</Text>
+        <Text style={styles.playAgain}>Play Again?</Text>
         </TouchableOpacity>
 
 
@@ -122,17 +126,21 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         textAlign: 'center',
+        marginTop: 20,
     },
     text: {
       fontSize: 20,
       fontWeight: 'bold',
       alignSelf: 'center',
     },
+    statsContainer: {
+      marginTop: 20,
+    },
     stats: {
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       width: '100%',
-      gap: 10,
+      gap: 40,
     },
     score: {
       fontSize: 40,

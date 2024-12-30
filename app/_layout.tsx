@@ -35,6 +35,9 @@ export default function RootLayout() {
       <Stack.Screen name="endGame" options={{
           headerShown: false,
           }} />
+      <Stack.Screen name="leaderboard" options={{
+          headerShown: true,
+          }} />
     </Stack>
     </GestureHandlerRootView>
     </ClerkLoaded>

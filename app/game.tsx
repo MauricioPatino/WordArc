@@ -15,7 +15,7 @@ import Animated, {
   ZoomIn,
 } from 'react-native-reanimated';
 
-const ROWS = 6;
+const ROWS = 1;
 
 const Page = () => {
   const [word, setWord] = useState(words[Math.floor(Math.random() * words.length)]);

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
 import Icon from '@/assets/images/wordArc.svg';
 import Settings from "@/components/Settings";
+import { BG } from "@/constants/Colors";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
@@ -82,11 +83,12 @@ export default function Index(){
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     gap: 20,
     paddingHorizontal: 10,
+    //backgroundColor: BG,
   },
   wordArc: {
     fontSize: 40,
